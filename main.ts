@@ -245,6 +245,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
     if (info.score() >= 3) {
+        statusbar.attachToSprite(mySprite, 8, 0)
         if (mySprite.y < 80) {
             animation.runImageAnimation(
             mySprite,
