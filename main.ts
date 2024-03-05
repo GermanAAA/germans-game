@@ -715,7 +715,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 info.onScore(15, function () {
-    mySprite = sprites.create(img`
+    mySprite.setImage(img`
         . . . . f f f f f . . . . . . . 
         . . . f e e e e e f . . . . . . 
         . . f d d d d e e e f . . . . . 
@@ -732,7 +732,7 @@ info.onScore(15, function () {
         . f b d f d b f b b f e f f e f 
         . f d d f d d f d d b e f f f f 
         . . f f f f f f f f f f f f f . 
-        `, SpriteKind.Player)
+        `)
     mySprite.ay = 100
     scroller.setLayerImage(scroller.BackgroundLayer.Layer0, img`
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -1356,7 +1356,7 @@ statusbars.onZero(StatusBarKind.Health, function (status) {
     game.setGameOverScoringType(game.ScoringType.HighScore)
 })
 info.onScore(7, function () {
-    mySprite = sprites.create(img`
+    mySprite.setImage(img`
         ........................
         ........................
         ........................
@@ -1381,7 +1381,7 @@ info.onScore(7, function () {
         ........................
         ........................
         ........................
-        `, SpriteKind.Player)
+        `)
     mySprite.setVelocity(0, -29)
     mySprite.ay = 80
     scroller.setLayerImage(scroller.BackgroundLayer.Layer0, img`
@@ -2001,7 +2001,7 @@ info.onScore(7, function () {
     scroller.scrollBackgroundWithSpeed(50, 0, scroller.BackgroundLayer.Layer4)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    if (mySprite.overlapsWith(myEnemy)) {
+    if (sprite.overlapsWith(otherSprite)) {
         sprites.destroy(myEnemy, effects.fire, 100)
         statusbar.value += -25
         animation.runImageAnimation(
@@ -3387,7 +3387,7 @@ game.onUpdateInterval(10000, function () {
             a b 6 b b a c . . . . . . . . . 
             . a a b c . . . . . . . . . . . 
             `, 50, 0)
-        myEnemy.setPosition(0, randint(80, 50))
+        myEnemy2.setPosition(0, randint(80, 50))
         animation.runImageAnimation(
         mySprite,
         [img`
